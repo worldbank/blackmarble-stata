@@ -95,11 +95,14 @@ for(geo_dataset_i in c("gadm_410")){
           ## Monthly
           if( (ntl_dataset_i == "blackmarble") & (ntl_time_level_i == "monthly")){
             
-            dates_vec <- seq.Date(from = ymd("2012-01-01"),
-                                  to = Sys.Date(),
+            # dates_vec <- seq.Date(from = ymd("2012-01-01"),
+            #                       to = Sys.Date(),
+            #                       by = "month") %>%
+            #   as.character()
+            dates_vec <- seq.Date(from = ymd("2023-01-01"),
+                                  to = ymd("2023-12-01"),
                                   by = "month") %>%
               as.character()
-            dates_vec <- dates_vec[1:3]
           } 
           
           ## Daily
@@ -120,12 +123,16 @@ for(geo_dataset_i in c("gadm_410")){
               as.vector()
           }
           
+          files_in_s3 <- list.files("~/Desktop/stata_ntl_data",
+                                    recursive = T,
+                                    pattern = "*.parquet")
+          
           # Loop date - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
           for(date_i in dates_vec){
             
             s3_path_date_i <- paste0(geo_dataset_i, "/", geo_level_i, "/", unit_i, "/", ntl_dataset_i, "/", ntl_time_level_i, "/", date_i, ".parquet")
-            
-            if(T){ # !(s3_path_date_i %in% files_in_s3)
+          
+            if(!(s3_path_date_i %in% files_in_s3)){ 
               print(unit_i)
               
               # Make folders in s3 -----------------------------------------------
