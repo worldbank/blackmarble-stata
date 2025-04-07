@@ -1,0 +1,71 @@
+query_satellite_data —————————————————————————
+
+In AWS s3, I have a bucket: wb-blackmarble with the following three files:
+
+gadm_410/ADM_0/ABW/blackmarble/annual/2021.dta
+
+gadm_410/ADM_0/ABW/blackmarble/annual/2022.dta
+
+gadm_410/ADM_0/ABW/blackmarble/annual/2023.dta
+
+Write a Stata function where the user inputs:
+iso = “AWB”
+years = 2020 2021 2022
+file_name = “~/Desktop/ntl.dta”
+
+The function name should be: download_country_data
+
+The function should do the following:
+
+1. Create a folder:
+ “~/Desktop/ntl_dta_individual_files”
+
+The folder name should reflect the name of the users input of file_name. For example, if the user sets:
+file_name = “~/Desktop/dataset.dta”
+
+the created folder should be:
+  “~/Desktop/dataset_dta_individual_files”
+
+2. Create a sub-folder for the iso. This would be:
+ “~/Desktop/ntl_dta_individual_files/AWB”
+
+3. Download all relevant and available AWS files into the folder created into step 2. 
+
+Note the input specifies 2020, 2021, and 2022. However, the 2020 dataset is not available. The function should not break down here. Here, the function would download:
+
+gadm_410/ADM_0/ABW/blackmarble/annual/2021.dta
+
+gadm_410/ADM_0/ABW/blackmarble/annual/2022.dta
+
+into:
+
+ “~/Desktop/ntl_dta_individual_files/AWB”
+
+Before downloading, the function should check if the file already exists (ie, it is already downloaded); if it does exist, the function should skip downloading because the file is already downloaded.
+
+4. Append all .dta files in:
+
+ “~/Desktop/ntl_dta_individual_files/AWB”
+
+5. Save the appended dataset as:
+
+“~/Desktop/ntl.dta”
+
+Please let me know if I should clarify anything before you create the function.
+
+
+* query_geojson -------------------------------------------
+
+In AWS s3, I have a bucket: wb-blackmarble with the following files:
+
+https://wb-blackmarble.s3.us-east-2.amazonaws.com/gadm_410/ADM_0/ABW/ABW.geojson
+https://wb-blackmarble.s3.us-east-2.amazonaws.com/gadm_410/ADM_0/AFG/AFG.geojson
+
+Write a function in Stata where the user inputs:
+geo_dataset(“gadm_410”)
+adm_level(“ADM_0”)
+iso(“ABW”)
+file_name(“~/Desktop/country_file.geojson”)
+
+And where the function downloads the .geojson to file_name
+ 
