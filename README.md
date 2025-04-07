@@ -3,7 +3,7 @@
 **BlackMarble-Stata** is a Stata package that provides a simple way to query nighttime lights data from NASA's Black Marble that have been pre-aggregated to administrative boundaries. [Black Marble](https://blackmarble.gsfc.nasa.gov) is a [NASA Earth Science Data Systems (ESDS)](https://www.earthdata.nasa.gov) project that provides a product suite of daily, monthly and yearly global [nighttime lights](https://www.earthdata.nasa.gov/topics/human-dimensions/nighttime-lights). 
 
 * [Install and update](#install)
-* [Summary of functions](#functions)
+* [Summary of commands](#commands)
 * [Usage: Query aggregated dataset of nighttime lights](#usage_query_bm)
     * [Parameters](#usage_query_bm_parameters)
     * [Example input](#usage_query_bm_ex_input)
@@ -17,17 +17,17 @@
 net install blackmarble, from("https://raw.githubusercontent.com/worldbank/blackmarble-stata/main/src") replace
 ```
 
-## Summary of functions <a name="functions"></a>
+## Summary of commands <a name="commands"></a>
 
 | Command | Description |
 | --- | --- |
-| [query_bm]() | Query BlackMarble nighttime lights data aggregated at the administrative unit level |
-| [query_shp]() | Query the shapefile of the administrative unit used for aggregations |
-| [query_geojson]() | Query the shapefile of the administrative unit used for aggregations |
+| [query_bm](#usage_query_bm) | Query BlackMarble nighttime lights data aggregated at the administrative unit level |
+| [query_shp](#usage_query_spatial) | Query the shapefile of the administrative unit used for aggregations |
+| [query_geojson](#usage_query_spatial) | Query the shapefile of the administrative unit used for aggregations |
 
 ## Usage: Query aggregated dataset of nighttime lights <a name="usage_query_bm"></a>
 
-The `query_bm` function allows querying aggregated nighttime lights using different administrative datasets and different administrative levels. The function has the following parameters:
+The `query_bm` command allows querying aggregated nighttime lights using different administrative datasets and different administrative levels. The command has the following parameters:
 
 _Parameters:_ <a name="usage_query_bm_parameters"></a>
 
