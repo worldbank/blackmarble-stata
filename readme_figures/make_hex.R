@@ -88,7 +88,7 @@ if(T){
   crop_width <- width - 0
   crop_height <- height - 5
   offset_x <- 0
-  offset_y <- 0
+  offset_y <- 1
   
   # Perform the crop
   cropped_img <- image_crop(img, geometry_area(crop_width, crop_height, offset_x, offset_y))
