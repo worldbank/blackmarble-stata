@@ -1,0 +1,37 @@
+* This package file is generated in the adodown workflow.
+* Do not edit manually - instead, use the command ad_update in the adodown package
+*** version
+v 0.0
+*** title
+d 'BLACKMARBLE': 
+*** description
+d This package queries satellite data
+d
+*** stata
+d Requires: Stata version 0.0
+d
+*** author
+d Author: Robert Marty
+*** contact
+d Contact: rmarty@worldbank.org
+*** url
+d URL: https://github.com/worldbank/blackmarble-stata/adodown
+d
+*** date
+d Distribution-Date: 20250407
+*** adofiles
+f ado/query_geojson.ado
+f ado/query_shp.ado
+f ado/query_bm.ado
+f ado/blackmarble.ado
+
+*** helpfiles
+f sthlp/query_geojson.sthlp
+f sthlp/query_shp.sthlp
+f sthlp/query_bm.sthlp
+f sthlp/blackmarble.sthlp
+
+*** ancillaryfiles
+
+*** end
+e
