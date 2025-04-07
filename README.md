@@ -21,10 +21,6 @@ net install blackmarble, from("https://raw.githubusercontent.com/worldbank/black
 
 ## Usage: Query aggregated dataset of nighttime lights <a name="usage_query_bm"></a>
 
-The `query_bm` function allows creating a dataset of Black Marble nighttime lights for different administrative units over time. The [input](#input_query_bm) section describes different inputs to the function, and the [output](#output_query_bm) describes the nighttime light variables in the produced dataset; variables included aggregated nighttime lights, and diagnostic variables to determine the quality of nighttime lights.
-
-#### Input: Using `query_bm` <a name="input_query_bm"></a>
-
 The `query_bm` function allows querying aggregated nighttime lights using different administrative datasets and different administrative levels. The function has the following parameters:
 
 _Parameters:_
@@ -80,16 +76,10 @@ The following are quality classifications:
     * `1`: High-quality, Ephemeral nighttime Lights
     * `2`: Poor-quality, Outlier, potential cloud contamination, or other issues
 
-  * For __monthly and annual__ data:
-    * `0`: Good-quality, The number of observations used for the composite is larger than 3
-    * `1`: Poor-quality, The number of observations used for the composite is less than or equal to 3
-    * `2`: Gap filled NTL based on historical data
-
-#### Output <a name=output_query_bm"></a> 
-
-DATASET
-
-INDIVIDUAL FILES (if want to update the dataset later on)
+* For __monthly and annual__ data:
+  * `0`: Good-quality, The number of observations used for the composite is larger than 3
+  * `1`: Poor-quality, The number of observations used for the composite is less than or equal to 3
+  * `2`: Gap filled NTL based on historical data
 
 ## Usage: Query spatial files <a name="usage_query_spatial"></a>
 
@@ -150,7 +140,10 @@ drop _merge
 * Make map ---------------------------------------------------------------------
 
 * Generate the map
-spmap ntl_sum using afg_coord, id(id) fcolor(Blues) ocolor(white) clmethod(quantile) title("NTL Sum in Afghanistan, 2021")
+spmap ntl_sum using afg_coord, id(id) fcolor(Blues) ocolor(white) \\\
+                               clmethod(quantile) \\\
+                               title("NTL Sum in Afghanistan, 2021") \\\
+                               legend(position(11))
     
 * Save the map as a PNG file
 graph export "~/Desktop/afg_ntl_map.png", replace width(2000) height(1600)

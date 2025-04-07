@@ -34,7 +34,7 @@ drop _merge
 * Make map ---------------------------------------------------------------------
 
 * Generate the map
-spmap ntl_sum using afg_coord, id(id) fcolor(Blues) ocolor(white) clmethod(quantile) title("NTL Sum in Afghanistan, 2021")
+spmap ntl_sum using afg_coord, id(id) fcolor(Blues) ocolor(white) clmethod(quantile) title("NTL Sum in Afghanistan, 2021") legend(position(11))
     
 * Save the map as a PNG file
 graph export "~/Documents/Github/blackmarble-stata/man/figures/afg_ntl_map.png", replace width(2000) height(1600)
