@@ -86,7 +86,7 @@ if(T){
   
   # Define crop margins (adjust as needed, e.g., 5 pixels on each side)
   crop_width <- width - 0
-  crop_height <- height - 0.5
+  crop_height <- height - 1
   offset_x <- 0
   offset_y <- 0
   
