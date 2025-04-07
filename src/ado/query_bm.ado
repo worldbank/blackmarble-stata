@@ -10,12 +10,13 @@ qui {
     syntax, ///
 		geo_dataset(string) ///
 		adm_level(string) ///
-		sat_dataset(string) ///
 		iso(string) ///
 		date_unit(string) ///
 		date_start(string) ///
 		date_end(string) ///
 		file_name(string)
+		
+	local sat_dataset = "blackmarble"
     
     // Step 1: Create a folder based on the file_name
     local base_folder = substr("`file_name'", 1, strlen("`file_name'") - 4)

@@ -9,7 +9,6 @@ clear all
 
 * Download data ----------------------------------------------------------------
 query_satellite_data, geo_dataset("gadm_410") adm_level("ADM_1") iso("AFG") ///
-					  sat_dataset("blackmarble") ///
 					  date_unit("annual") date_start("2021") date_end("2021") ///
 					  file_name("~/Desktop/afg_annual_2021.dta")
 						  
