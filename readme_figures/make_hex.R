@@ -9,6 +9,7 @@ if(T){
   library(tidyverse)
   library(raster)
   library(sf)
+  library(magick)
   
   bearer <- read_csv("~/Dropbox/bearer_bm.csv") %>%
     pull(token)
@@ -73,6 +74,27 @@ if(T){
           l_width = 3,
           l_height = 3,
           filename="~/Documents/Github/blackmarble-stata/man/figures/logo.png")
+  
+  #### Slightly crop
+  # Load the image
+  img <- image_read("~/Documents/Github/blackmarble-stata/man/figures/logo.png")
+  
+  # Get image dimensions
+  info <- image_info(img)
+  width <- info$width
+  height <- info$height
+  
+  # Define crop margins (adjust as needed, e.g., 5 pixels on each side)
+  crop_width <- width - 0
+  crop_height <- height - 0.1
+  offset_x <- 0
+  offset_y <- 0
+  
+  # Perform the crop
+  cropped_img <- image_crop(img, geometry_area(crop_width, crop_height, offset_x, offset_y))
+  
+  # Save the cropped image (overwrite or save with a new name)
+  image_write(cropped_img, path = "~/Documents/Github/blackmarble-stata/man/figures/logo.png")
 
   
  

@@ -33,6 +33,7 @@ _Parameters:_ <a name="usage_query_bm_parameters"></a>
 
 * __geo_dataset:__ Geographic dataset for aggregating nighttime lights. Options include:
   - __GADM (version 4.10) ["gadm_410"]:__ [Database of Global Administrative Areas](https://gadm.org/)
+  - _Additional datasets may be added at a later date_
 * __adm_level:__ Administrative level. Includes "ADM_0" through "ADM_2".
 * __iso:__ ISO Country code(s). Can input multiple if interested in a dataset of multiple countries.
 * __date_unit:__ Either "annual", "monthly", or "daily".
