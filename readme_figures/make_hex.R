@@ -21,7 +21,7 @@ if(T){
   loc_sf <- st_as_sf(loc_sf,
                      coords = c("lon", "lat"),
                      crs = 4326) %>%
-    st_buffer(dist = 410*1000)
+    st_buffer(dist = 300*1000) # 410
   
   r <- bm_raster(roi_sf = loc_sf,
                  product_id = "VNP46A4",
