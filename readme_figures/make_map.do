@@ -3,7 +3,7 @@
 clear all
 
 * Install packages -------------------------------------------------------------
-* net install statasat , from("https://raw.githubusercontent.com/ramarty/stata-satellite/master/src") replace
+* net install blackmarble, from("https://raw.githubusercontent.com/worldbank/blackmarble-stata/main/src") replace
 * ssc install spmap, replace      // Install spmap if not already installed
 * ssc install shp2dta, replace    // Install shp2dta if not already installed
 

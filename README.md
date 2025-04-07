@@ -8,7 +8,7 @@ __blackmarble__ faciliates querying nighttime lights data.
 ## Install and update
 
 ```stata
-net install blackmarble, from("https://raw.githubusercontent.com/ramarty/stata-satellite/master/src") replace
+net install blackmarble, from("https://raw.githubusercontent.com/worldbank/blackmarble-stata/main/src") replace
 ```
 
 ## Usage
