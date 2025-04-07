@@ -1,5 +1,6 @@
 # BlackMarble-Stata <img src="man/figures/logo.png" align="right" width="200" />
 
+**BlackMarble-Stata** is a Stata package that provides a simple way to query nighttime lights data from NASA's Black Marble that have been pre-aggregated to administrative boundaries. [Black Marble](https://blackmarble.gsfc.nasa.gov) is a [NASA Earth Science Data Systems (ESDS)](https://www.earthdata.nasa.gov) project that provides a product suite of daily, monthly and yearly global [nighttime lights](https://www.earthdata.nasa.gov/topics/human-dimensions/nighttime-lights). 
 ## Content
 
 __blackmarble__ faciliates querying nighttime lights data.
