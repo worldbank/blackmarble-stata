@@ -86,9 +86,9 @@ if(T){
   
   # Define crop margins (adjust as needed, e.g., 5 pixels on each side)
   crop_width <- width - 0
-  crop_height <- height - 2
+  crop_height <- height - 4
   offset_x <- 0
-  offset_y <- 1
+  offset_y <- 2
   
   # Perform the crop
   cropped_img <- image_crop(img, geometry_area(crop_width, crop_height, offset_x, offset_y))
