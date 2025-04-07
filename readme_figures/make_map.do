@@ -38,4 +38,4 @@ drop _merge
 spmap ntl_sum using afg_coord, id(id) fcolor(Blues) ocolor(white) clmethod(quantile) title("NTL Sum in Afghanistan, 2021")
     
 * Save the map as a PNG file
-graph export "~/Desktop/afg_ntl_map.png", replace width(2000) height(1600)
+graph export "~/Documents/Github/blackmarble-stata/man/figures/afg_ntl_map.png", replace width(2000) height(1600)
