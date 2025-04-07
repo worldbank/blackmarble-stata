@@ -1,19 +1,25 @@
 # BlackMarble-Stata <img src="man/figures/logo.png" align="right" width="200" />
 
 **BlackMarble-Stata** is a Stata package that provides a simple way to query nighttime lights data from NASA's Black Marble that have been pre-aggregated to administrative boundaries. [Black Marble](https://blackmarble.gsfc.nasa.gov) is a [NASA Earth Science Data Systems (ESDS)](https://www.earthdata.nasa.gov) project that provides a product suite of daily, monthly and yearly global [nighttime lights](https://www.earthdata.nasa.gov/topics/human-dimensions/nighttime-lights). 
-## Content
 
-__blackmarble__ faciliates querying nighttime lights data.
+* [Install and update](#install)
+* [Summary of functions](#functions)
 
-## Install and update
+## Install and update <a name="install"></a>
 
 ```stata
 net install blackmarble, from("https://raw.githubusercontent.com/worldbank/blackmarble-stata/main/src") replace
 ```
 
-## Usage
+## Summary of functions <a name="functions"></a>
 
-### Download aggregated dataset of nighttime lights
+| Command | Description |
+| --- | --- |
+| [query_bm]() | Query BlackMarble nighttime lights data aggregated at the administrative unit level |
+| [query_shp]() | Query the shapefile of the administrative unit used for aggregations |
+| [query_geojson]() | Query the shapefile of the administrative unit used for aggregations |
+
+## Usage: Query aggregated dataset of nighttime lights <a name="usage_query_bm"></a>
 
 The `query_bm` function allows creating a dataset of Black Marble nighttime lights for different administrative units over time. The [input](#input_query_bm) section describes different inputs to the function, and the [output](#output_query_bm) describes the nighttime light variables in the produced dataset; variables included aggregated nighttime lights, and diagnostic variables to determine the quality of nighttime lights.
 
@@ -35,8 +41,6 @@ _Variables for nighttime lights_
 * __date_unit:__ Either "annual", "monthly", or "daily".
 * __date_start:__ The start date to query nighttime lights. For annual, the format is YYYY (eg, "2012"); for monthly, the format is YYYY-MM (e.g., "2012-01"); for daily, the format is YYYY-MM-DD (e.g., "2012-01-01").
 * __date_end:__ The end date to query nighttime lights. For annual, the format is YYYY (eg, "2025"); for monthly, the format is YYYY-MM (e.g., "2015-01"); for daily, the format is YYYY-MM-DD (e.g., "2025-01-01").
-* __sat_dataset:__ Satellite dataset to use. Options include:
-  - __"blackmarble":__ VIIRS BlackMarble
 
 ```stata
 query_bm, geo_dataset("gadm_410") ///
@@ -45,7 +49,6 @@ query_bm, geo_dataset("gadm_410") ///
           date_unit("annual") ///
           date_start("2012") ///
           date_end("2023") ///
-          sat_dataset("blackmarble") /// 
           file_name("~/Desktop/ntl_dataset.dta")
 ```
 
@@ -55,8 +58,7 @@ DATASET
 
 INDIVIDUAL FILES (if want to update the dataset later on)
 
-
-### Download spatial files
+## Usage: Query spatial files <a name="usage_query_spatial"></a>
 
 The package also enables querying the spatial files used for aggregation. `query_shp` can be used to download a shapefile and `query_geojson` can be used to download a geojson.
 
@@ -70,9 +72,9 @@ query_geojson, geo_dataset("gadm_410") adm_level("ADM_1") iso("AFG") ///
                file_name("~/Desktop/afg_adm1.geojson")
 ```
 
-## Example: Make a map of nighttime lights
+## Usage: Make a map of nighttime lights <a name="usage_make_map"></a>
 
-The below example illustrates making a map of nighttime lights
+The below example illustrates making a map of nighttime lights. This approach requires querying both nighttime lights data and a spatial file
 
 ```stata
 * Example of Making a Map
@@ -80,15 +82,18 @@ The below example illustrates making a map of nighttime lights
 clear all
 
 * Install packages -------------------------------------------------------------
-* net install statasat , from("https://raw.githubusercontent.com/ramarty/stata-satellite/master/src") replace
+* net install blackmarble, from("https://raw.githubusercontent.com/worldbank/blackmarble-stata/main/src") replace
 * ssc install spmap, replace      // Install spmap if not already installed
 * ssc install shp2dta, replace    // Install shp2dta if not already installed
 
 * Download data ----------------------------------------------------------------
-query_satellite_data, geo_dataset("gadm_410") adm_level("ADM_1") iso("AFG") ///
-					  sat_dataset("blackmarble") ///
-					  date_unit("annual") date_start("2021") date_end("2021") ///
-					  file_name("~/Desktop/afg_annual_2021.dta")
+query_bm, geo_dataset("gadm_410") /// 
+          adm_level("ADM_1") ///
+          iso("AFG") ///
+          date_unit("annual") ///
+          date_start("2021") ///
+          date_end("2021") ///
+          file_name("~/Desktop/afg_annual_2021.dta")
 						  
 query_shp, geo_dataset("gadm_410") adm_level("ADM_1") iso("AFG") file_name("~/Desktop/afg_adm1.shp")
 
