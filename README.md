@@ -33,17 +33,11 @@ _Parameters:_ <a name="usage_query_bm_parameters"></a>
 
 * __geo_dataset:__ Geographic dataset for aggregating nighttime lights. Options include:
   - __GADM (version 4.10) ["gadm_410"]:__ [Database of Global Administrative Areas](https://gadm.org/)
-  
 * __adm_level:__ Administrative level. Includes "ADM_0" through "ADM_2".
-
 * __iso:__ ISO Country code(s). Can input multiple if interested in a dataset of multiple countries.
-
 * __date_unit:__ Either "annual", "monthly", or "daily".
-
 * __date_start:__ The start date to query nighttime lights. For annual, the format is YYYY (eg, "2012"); for monthly, the format is YYYY-MM (e.g., "2012-01"); for daily, the format is YYYY-MM-DD (e.g., "2012-01-01").
-
 * __date_end:__ The end date to query nighttime lights. For annual, the format is YYYY (eg, "2025"); for monthly, the format is YYYY-MM (e.g., "2015-01"); for daily, the format is YYYY-MM-DD (e.g., "2025-01-01").
-
 * __file_name:__ File name to export dataset of nighttime lights.
 
 _Example input:_ <a name="usage_query_bm_ex_input"></a>
