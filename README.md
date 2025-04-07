@@ -27,7 +27,7 @@ The `query_bm` function allows creating a dataset of Black Marble nighttime ligh
 
 The `query_bm` function allows querying aggregated nighttime lights using different administrative datasets and different administrative levels. The function has the following parameters:
 
-_Parameters for geographic dataset to aggregate to_
+_Parameters:_
 
 * __geo_dataset:__ Geographic dataset for aggregating nighttime lights. Options include:
   - __GADM (version 4.10) ["gadm_410"]:__ [Database of Global Administrative Areas](https://gadm.org/)
@@ -36,11 +36,15 @@ _Parameters for geographic dataset to aggregate to_
 
 * __iso:__ ISO Country code(s). Can input multiple if interested in a dataset of multiple countries.
 
-_Variables for nighttime lights_
-
 * __date_unit:__ Either "annual", "monthly", or "daily".
+
 * __date_start:__ The start date to query nighttime lights. For annual, the format is YYYY (eg, "2012"); for monthly, the format is YYYY-MM (e.g., "2012-01"); for daily, the format is YYYY-MM-DD (e.g., "2012-01-01").
+
 * __date_end:__ The end date to query nighttime lights. For annual, the format is YYYY (eg, "2025"); for monthly, the format is YYYY-MM (e.g., "2015-01"); for daily, the format is YYYY-MM-DD (e.g., "2025-01-01").
+
+* __file_name:__ File name to export dataset of nighttime lights.
+
+_Example input:_
 
 ```stata
 query_bm, geo_dataset("gadm_410") ///
@@ -48,9 +52,38 @@ query_bm, geo_dataset("gadm_410") ///
           iso("AFG AGO AIA") ///
           date_unit("annual") ///
           date_start("2012") ///
-          date_end("2023") ///
+          date_end("2022") ///
           file_name("~/Desktop/ntl_dataset.dta")
 ```
+
+_Output:_
+
+The function creates a dataset and folder with individual files that are used to construct the exported dataset. For example, the above function creates:
+
+* __ntl_dataset.dta:__ Dataset of nighttime lights
+* __ntl_dataset_dta_individual_files:__ Folder with all individual files used to create the dataset of nighttime lights. There is a separate file for each country and each date. If the `query_bm` function is run again, the function will check this folder to see which files have already been downloaded and will only downloaded files that have yet to be download. For example, if the function is run and the `date_end` later changed---such as changing `date_end` to `"2023"`, then the function will only download data for 2023.
+
+The __ntl_dataset.dta__ dataset contains the following variables about nighttime lights:
+
+* __ntl_sum:__ Sum of nighttime lights in the administrative unit.
+* __ntl_mean:__ Mean of nighttime lights in the administrative unit.
+* __ntl_median:__ Median of nighttime lights in the administrative unit.
+* __prop_na:__ Proportion of values in the administrative unit that are `NA`. For example, a value may be set to `NA` is the pixel was covered by clouds.
+* __prop_quality_0:__ Proportion of values in the administrative unit classified as quality 0 (see below for quality classification descriptions)
+* __prop_quality_1:__ Proportion of values in the administrative unit classified as quality 1 (see below for quality classification descriptions)
+* __prop_quality_2:__ Proportion of values in the administrative unit classified as quality 2 (see below for quality classification descriptions)
+
+The following are quality classifications:
+
+* For __daily__ data:
+    * `0`: High-quality, Persistent nighttime lights
+    * `1`: High-quality, Ephemeral nighttime Lights
+    * `2`: Poor-quality, Outlier, potential cloud contamination, or other issues
+
+  * For __monthly and annual__ data:
+    * `0`: Good-quality, The number of observations used for the composite is larger than 3
+    * `1`: Poor-quality, The number of observations used for the composite is less than or equal to 3
+    * `2`: Gap filled NTL based on historical data
 
 #### Output <a name=output_query_bm"></a> 
 
