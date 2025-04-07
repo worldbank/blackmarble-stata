@@ -4,6 +4,12 @@
 
 * [Install and update](#install)
 * [Summary of functions](#functions)
+* [Usage: Query aggregated dataset of nighttime lights](#usage_query_bm)
+    * [Parameters](#usage_query_bm_parameters)
+    * [Example input](#usage_query_bm_ex_input)
+    * [Output](#usage_query_bm_output)
+* [Usage: Query spatial files](#usage_query_spatial)
+* [Usage: Make a map of nighttime lights](#usage_make_map)
 
 ## Install and update <a name="install"></a>
 
@@ -23,7 +29,7 @@ net install blackmarble, from("https://raw.githubusercontent.com/worldbank/black
 
 The `query_bm` function allows querying aggregated nighttime lights using different administrative datasets and different administrative levels. The function has the following parameters:
 
-_Parameters:_
+_Parameters:_ <a name="usage_query_bm_parameters"></a>
 
 * __geo_dataset:__ Geographic dataset for aggregating nighttime lights. Options include:
   - __GADM (version 4.10) ["gadm_410"]:__ [Database of Global Administrative Areas](https://gadm.org/)
@@ -40,7 +46,7 @@ _Parameters:_
 
 * __file_name:__ File name to export dataset of nighttime lights.
 
-_Example input:_
+_Example input:_ <a name="usage_query_bm_ex_input"></a>
 
 ```stata
 query_bm, geo_dataset("gadm_410") ///
@@ -52,7 +58,7 @@ query_bm, geo_dataset("gadm_410") ///
           file_name("~/Desktop/ntl_dataset.dta")
 ```
 
-_Output:_
+_Output:_ <a name="usage_query_bm_output"></a>
 
 The function creates a dataset and folder with individual files that are used to construct the exported dataset. For example, the above function creates:
 
